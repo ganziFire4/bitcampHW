@@ -1,34 +1,35 @@
---1) Àü°ø°ú Àü°øº° ±â¸»°í»ç Æò±Õ Á¡¼ö¸¦ °®´Â Å×ÀÌºí T_MAJOR_AVG_RES¸¦ »ý¼ºÇÏ°í
---   SCOREÅ×ÀÌºí°ú STUDENTÅ×ÀÌºíÀ» ÂüÁ¶ÇØ¼­
---   T_MAJOR_AVG_RES¿¡ µ¥ÀÌÅÍ¸¦ ÀúÀåÇÏ´Â ÇÁ·Î½ÃÀú P_MAJOR_AVG_RES¸¦ »ý¼ºÇÏ¼¼¿ä.
-CREATE TABLE T_MAJOR_AVG_RES AS
-SELECT ST.MAJOR,
-     , ROUND(AVG(SC.RESULT), 2) AS RE_AVG
-    FROM STUDENT ST
-    JOIN SCORE SC
-      ON ST.SNO = SC.SNO
-    GROUP BY ST.MAJOR;
+--1) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½â¸»ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ T_MAJOR_AVG_RESï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½
+--   SCOREï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ STUDENTï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½
+--   T_MAJOR_AVG_RESï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½Î½ï¿½ï¿½ï¿½ P_MAJOR_AVG_RESï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½.
+CREATE TABLE T_MAJOR_AVG_RES(
+    MAJOR VARCHAR2(20),
+    AVG_RES NUMBER(5, 2)
+);
 
 CREATE OR REPLACE PROCEDURE P_MAJOR_AVG_RES
 IS
+    CURSOR CUR_MAJOR_AVG_RES IS
+        SELECT ST.MAJOR
+             , ROUND(AVG(SC.RESULT), 2)
+            FROM STUDENT ST
+            JOIN SCORE SC
+              ON ST.SNO = SC.SNO
+            GROUP BY ST.MAJOR;
 BEGIN
-    INSERT INTO T_MAJOR_AVG_RES
-SELECT ST.MAJOR,
-     , ROUND(AVG(SC.RESULT), 2) AS RE_AVG
-    FROM STUDENT ST
-    JOIN SCORE SC
-      ON ST.SNO = SC.SNO
-    GROUP BY ST.MAJOR,
+    FOR MAJOR_AVG_RES_ROW IN CUR_MAJOR_AVG_RES LOOP
+        INSERT INTO T_MAJOR_AVG_RES
+        VALUES MAJOR_AVG_RES_ROW;
+    END LOOP;
 END;
 /
 
 EXEC P_MAJOR_AVG_RES;
-    SELECT * FROM T_MAJOR_AVG_RES;
 
+SELECT *
+    FROM T_MAJOR_AVG_RES;
 
-
---2) ±³¼öµéÀº ºÎÀÓÀÏ·ÎºÎÅÍ 5³â¸¶´Ù ¾È½Ä³âÀ» °®½À´Ï´Ù.
---   ±³¼öµéÀÇ ¿À´Ã³¯Â¥±îÁöÀÇ ¾È½Ä³â È½¼ö¸¦ ¸®ÅÏÇÏ´Â ÇÔ¼ö F_GET_VACATION_CNT¸¦ ±¸ÇöÇÏ¼¼¿ä
+--2) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·Îºï¿½ï¿½ï¿½ 5ï¿½â¸¶ï¿½ï¿½ ï¿½È½Ä³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.
+--   ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã³ï¿½Â¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½È½Ä³ï¿½ È½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½ F_GET_VACATION_CNTï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½
 CREATE OR REPLACE FUNCTION F_GET_VACATION_CNT(
     SABB DATE
 )
@@ -43,8 +44,6 @@ END;
 /
 
 SELECT F_GET_VACATION_CNT('1994-02-17') FROM DUAL;
-
-
 
 DROP TABLE T_MAJOR_AVG_RES;
 DROP TABLE P_MAJOR_AVG_RES;
