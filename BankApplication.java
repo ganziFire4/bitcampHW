@@ -18,6 +18,7 @@ public class BankApplication {
 			int num = sc.nextInt();
 			if(num == 1) {
 				account.createAccount(accountArr, count);
+				System.out.println(count);
 				count++; 
 			}
 			else if(num == 2) {
@@ -27,7 +28,7 @@ public class BankApplication {
 				account.deposit(accountArr, count);
 			}
 			else if(num == 4) {
-				account.withdraw();
+				account.withdraw(accountArr, count);
 			}
 			else if(num == 5) {
 				System.out.println("프로그램을 종료합니다.");
