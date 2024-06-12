@@ -58,37 +58,59 @@ public class Account {
 		System.out.println("-------------");
 		
 		for(int i = 0; i < count; i++) {
-			System.out.println("계좌번호: " + accounts[i].getAccountNum() + 
-					", 계좌주: " + accounts[i].getAccountName() + ", 잔액: " 
-					+ accounts[i].getBalance());
-		 }
+			System.out.println(accounts[i].getAccountNum() + "   " 
+		+ accounts[i].getAccountName() + "   " + accounts[i].getBalance());
+		}
+		System.out.println(count);
 	}
 	
 	public void deposit(Account[] accounts, int count) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("예금");
-		System.out.println("-------------");
-		System.out.println("계좌번호: ");
-		String num = sc.nextLine();
-		System.out.println("예금액 : ");
-		int money = sc.nextInt();
-		for(int i = 0; i < accounts.length; i++) {
-			if(num.equals(accounts[0].accountNum)) {
-				if(money > 0) {
-					accounts[0].balance += money;
-					
-				} else
-					System.out.println("입금이 실패하였습니다.");
-			} else {
-				System.out.println("계좌를 찾지 못했습니다.");
-			}
-		}
+	    System.out.println("예금");
+	    System.out.println("-------------");
+	    System.out.println("계좌번호: ");
+	    String accountNum = sc.nextLine();
+	    System.out.println("예금액 : ");
+	    int money = sc.nextInt();
+
+	    for(int i = 0; i < count; i++) {
+	        if(accountNum.equals(accounts[i].getAccountNum())) {
+	            if(money > 0) {
+	                accounts[i].balance += money;
+	                return;
+	            } else {
+	                System.out.println("입금액은 0보다 커야합니다.");
+	                return;
+	            }
+	        }
+	    }
+	    System.out.println("계좌를 찾지 못했습니다.");
 	}
 	
-	public void withdraw() {
-		System.out.println("출금");
-		System.out.println("-------------");
-		// 출금 처리 로직
-		System.out.println("결과 : 출금이 성공되었습니다.");
+	public void withdraw(Account[] accounts, int count) {
+	    Scanner sc = new Scanner(System.in);
+	    System.out.println("출금");
+	    System.out.println("-------------");
+	    System.out.println("계좌번호: ");
+	    String num = sc.nextLine();
+	    System.out.println("출금액 : ");
+	    int money = sc.nextInt();
+
+	    for(int i = 0; i < count; i++) {
+	        if(num.equals(accounts[i].getAccountNum())) {
+	            if(money > 0 && money <= accounts[i].getBalance()) {
+	                accounts[i].balance -= money;
+	                System.out.println("결과 : 출금이 성공되었습니다.");
+	                return;
+	            } else if (money <= 0) {
+	                System.out.println("출금액은 0보다 커야합니다.");
+	                return;
+	            } else {
+	                System.out.println("잔액이 부족합니다.");
+	                return;
+	            }
+	        }
+	    }
+	    System.out.println("계좌를 찾지 못했습니다.");
 	}
 }
