@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz4</title>
+</head>
+<style>
+    body{
+        text-align: center;
+    
+    }
+
+    .small{
+        font-size: x-large;
+        font-weight: lighter;
+    }
+
+    .box{
+       
+        border : 2px solid lightgray;
+        padding: 5px;
+    }
+
+    
+</style>
+<body class="box">
+    <script>
+
+      
+ 
+        document.write(`<h1>3의 배수 찾기<h1>`);
+        
+        let num = 1;
+        let count = 0;
+
+        while(num <= 100){
+            if(num % 3 == 0){
+                document.write(`<span class="small">${num},</span> `);
+                count++;
+            }
+            num++;
+         
+
+        }
+       
+        document.write(`<br><br><span class="small">3의 배수 갯수 :  ${count}</span>`);
+
+            
+    </script>
+
+</body>
+</html>
