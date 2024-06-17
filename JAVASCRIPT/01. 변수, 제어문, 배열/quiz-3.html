@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>홀짝 구분</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1>짝수일까, 홀수일까</h1>
+    <script>
+        const division = parseInt(window.prompt("숫자를 입력하시오"));
+        let resultMessage;
+        switch(division % 2) {
+            case 0:
+                alert(`${division}은(는) 짝수입니다.`);
+                break;
+            case 1:
+                alert(`${division}은(는) 홀수입니다.`);
+                break;
+            default:
+                alert("입력한 값이 정수가 아닙니다.");
+                break;
+
+        document.getElementById("result").textContent = resultMessage;
+        }
+    </script>
+</body>
+</html>
