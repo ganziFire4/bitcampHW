@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a {
+            text-align: center;
+        }
+    </style> 
+</head>
+<body>
+    <div class="a">
+        <script>
+            const cnt = window.prompt("숫자를 입력하시오.");
+            document.write(`<h1>${"짝수일까, 홀수일까"}</h1>`)
+            if(cnt % 2 == 0) {
+                document.write(`<p>${cnt + " 은/는 짝수입니다."}</p>`);
+            } else {
+                document.write(`<p>${cnt + " 은/는 홀수입니다."}</p>`);
+            }
+            
+        </script>
+    </div>
+</body>
+</html>
