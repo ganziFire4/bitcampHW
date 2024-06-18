@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz-2</title>
+</head>
+
+<body>
+    <script>
+    let numbers = [];
+    for (let i = 1; i <= 45; i++) {
+        numbers.push(i);
+    }
+    
+    let result = [];
+    while (result.length < 7) {
+        let randomIndex = Math.floor(Math.random() * numbers.length);
+        let selectedNumber = numbers[randomIndex];
+        if (!result.includes(selectedNumber)) {
+            result.push(selectedNumber);
+            numbers.splice(randomIndex, 1);
+        }
+    }
+    console.log(result);
+    document.write("이번주 로또 당첨 번호는 : " + result[0] + ", " + result[1] + ", " + result[2] + ", "
+                     + result[3] + ", " + result[4] + ", " + result[5] + " 보너스 번호 : " + result[6]
+    );
+    
+    
+   
+    </script>
+</body>
+</html>
