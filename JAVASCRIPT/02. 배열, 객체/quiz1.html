@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열 합</title>
+</head>
+<body>
+    <script>
+
+        const arr1 = [10, 20, 30, 40, 50];
+
+        const sumArray = (arr) => {
+            return arr.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+        };
+
+        const sum = sumArray(arr1);
+
+        console.log(`${sum}`);
+        alert(`배열 합은 ${sum}입니다.`);
+    </script>
+</body>
+</html>
