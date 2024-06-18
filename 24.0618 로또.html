@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz2</title>
+</head>
+<style>
+  
+</style>
+<body>
+    <script>
+       let inputArr = [];
+
+        for(let i = 0; i < 6; i++){
+            const input = window.prompt("1~45까지의 숫자를 입력하세요.");
+            inputArr[i] = input;
+        }   
+
+
+        let lottoNum1 = [];
+      
+        for(let i = 0; i < 6; i++){
+            lottoNum1[i] = Math.floor(Math.random()*45)+1;
+        }
+        let bonus = Math.floor(Math.random()*45)+1;
+
+       
+        for(let i= 0 ; i < lottoNum1.length; i++){
+            lottoNum2 = lottoNum1[i];
+            lottoNum2.push(bonus);
+         }
+
+         let cnt = 0; 
+
+         
+         //당첨번호 lottoNum2
+         //입력받은 번호
+
+         for(let i= 0 ; i < lottoNum2.length; i++){
+            
+
+        }     
+        
+    
+
+        
+            
+        
+        
+        document.write(`이번주 로또 당첨 번호는 ${lottoNum1} , 보너스 번호 ${bonus}` );
+        document.write(`구입한 로또 번호:  ${inputArr}`);
+        document.write(`꽝!`);
+
+    
+       
+    </script>
+
+</body>
+</html>
