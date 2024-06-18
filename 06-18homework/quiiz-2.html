@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const chooseNum = [];
+        const lottoNum = [];
+        let bonusNum = 0;
+        let count = 0;
+        let bonusCnt = 0;
+        for(let i = 0; i < 6; i++) {
+            chooseNum[i] = window.prompt("1 ~ 45까지의 숫자를 입력하세요.");
+        }
+        for(let i = 0; i < 6; i++) {
+            lottoNum[i] = Math.floor(Math.random() * 45) + 1;
+            // 중복제거
+            if(i > 1) {
+                for(let j = 0; j < i; j++) {
+                    if(lottoNum[i] === lottoNum[j]) {
+                        i--;
+                        break;
+                    }
+                }
+            }
+        }
+        
+        document.write(`<span>이번주 로또 당첨 번호는 : ${lottoNum}</span>`);
+        bonusNum = Math.floor(Math.random() * 45) + 1;
+        document.write(`, 보너스번호 : ${bonusNum} `);
+        document.write(`<p>구입한 로또 번호 : ${chooseNum}</p>`);
+        
+        for(let i = 0; i < 6; i++) {
+            for(let j = 0; j < 6; j++){
+                if(chooseNum[i] === lottoNum[j]) {
+                    count++;
+                }
+                if(bonusNum === chooseNum[i]) {
+                    bonusCnt++;
+                }
+            }
+        }
+        if(count === 6) {
+            // 보너스가 미포함 경우 1등
+            document.write("1등");
+        } else if(count === 5 && bonusCnt === 1) {
+            // 보너스 포함일 경우 2등
+            document.write("2등");
+        } else if(count === 5) {
+            // 일반번호 5개
+            document.write("3등");
+        } else if(count === 4) {
+            document.write("4등");
+        } else if(count === 3) {
+            document.write("5등");
+        } else {
+            document.write("꽝!");
+        }
+        
+    
+
+    </script>
+</body>
+</html>
