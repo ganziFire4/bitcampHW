@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자의 크기 비교</title>
+</head>
+<body>
+    <script>
+        let num1 = parseInt(prompt(`비교할 첫 번째 숫자:`));
+        let num2 = parseInt(prompt(`비교할 두 번째 숫자:`));
+
+        // number는 그대로 표출
+        // parseInt는 다받아서 정수로만 표현한다함 (42.195 => 42)
+
+        if (num1 > num2) {
+            alert(`${num1}(이)가 ${num2} 보다 큽니다.` );
+        }
+        
+        else {
+            alert(`${num2}(이)가 ${num1} 보다 큽니다.`);
+        }
+    </script>
+</body>
+</html>
