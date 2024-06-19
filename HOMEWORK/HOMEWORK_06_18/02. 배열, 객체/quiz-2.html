@@ -8,7 +8,13 @@
 
 <body>
     <script>
+    let matchCount = 0;
+    const chooseNum = [];
     let numbers = [];
+    for(let i = 0; i < 6; i++) {
+        chooseNum[i] = window.prompt("1 ~ 45까지의 숫자를 입력하세요.");
+    }
+    
     for (let i = 1; i <= 45; i++) {
         numbers.push(i);
     }
@@ -24,11 +30,30 @@
     }
     console.log(result);
     document.write("이번주 로또 당첨 번호는 : " + result[0] + ", " + result[1] + ", " + result[2] + ", "
-                     + result[3] + ", " + result[4] + ", " + result[5] + " 보너스 번호 : " + result[6]
-    );
+                     + result[3] + ", " + result[4] + ", " + result[5] + " 보너스 번호 : " + result[6] + "<br>");
+                    
+    document.write("구입한 로또 번호 : " + chooseNum[0] + ", " + chooseNum[1] + ", " + chooseNum[2] + ", " 
+                    + chooseNum[3] + ", " + chooseNum[4] + ", " + chooseNum[5] + "<br>");
+
     
+    for (let i = 0; i < 6; i++) {
+        if (result.includes(chooseNum[i])) {
+            matchCount++;
+        }
+    }
+
+    if (matchCount === 6) {
+        document.write("축하합니다! 1등입니다!");
+    } else if (matchCount === 6 && result.includes(chooseNum[6])) {
+        document.write("축하합니다! 2등입니다!");
+    } else if (matchCount === 5) {
+        document.write("축하합니다! 3등입니다!");
+    } else if (matchCount === 4) {
+        document.write("축하합니다! 4등입니다!");
+    } else {
+        document.write("꽝.");
+    }
     
-   
     </script>
 </body>
-</html>
+</html> 

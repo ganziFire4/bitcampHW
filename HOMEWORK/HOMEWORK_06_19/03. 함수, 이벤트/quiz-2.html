@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const num1 = [];
+        const num2 = [];
+
+        for(let i = 0; i < 1; i++) {
+            num1[i] = window.prompt("비교할 첫 번째 숫자");
+        }
+        
+        for(let i = 0; i < 1; i++) {
+            num2[i] = window.prompt("비교할 두 번째 숫자");
+        }
+        
+        console.log(num1[0]); 
+        console.log(num2[0]);
+        
+        const comp = function(a, b){
+            if(parseInt(a) > parseInt(b)) {
+                alert(a + "(이)가" + b + "보다 큽니다.")
+                return 
+            } else {
+                alert(b + "(이)가" + a + "보다 큽니다.")
+                return 
+            }
+       
+        }
+
+        comp(num1[0], num2[0]);
+
+        
+
+    </script>
+</body>
+</html>
